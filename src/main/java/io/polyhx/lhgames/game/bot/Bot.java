@@ -65,19 +65,24 @@ public class Bot extends BaseBot {
         System.out.println("actionFaite2");
         System.out.println(pointDeplacer);
         System.out.println("actionFaite3");
-        switch(event){
+       switch (event) {
+            case VOLER:
+                action = createStealAction(pointVerifier);
+                break;
             case DEPLACER:
-                if(pointDeplacer==Point.RIGHT){
-                    pointDeplacer = Point.LEFT;
-                }
-                else{
-                    pointDeplacer = Point.RIGHT;
-                }
-            action = createMoveAction(pointDeplacer);
-            break;
+                action = createMoveAction(pointVerifier);
+                break;
+            case ATTAQUER:
+                action = createMeleeAttackAction(pointVerifier);
+                break;
             case RAMASSER:
-            action = createCollectAction(pointDeplacer);
-            break;
+                action = createCollectAction(pointVerifier);
+                break;
+            case ACHETER:
+                //action = createPurchaseAction();
+                break;
+            default:
+                break;
         }
         System.out.println(action);
         ancienneAction=action;
