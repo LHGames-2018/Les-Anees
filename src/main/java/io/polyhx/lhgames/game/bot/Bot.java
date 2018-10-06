@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Bot extends BaseBot {
     public IAction getAction(Map map, Player player, List<Player> others, GameInfo info) {
-        Enum Evenement{
+        enum Evenement{
             VOLER,
             DEPLACER_GAUCHE,
             DEPLACER_DROITE,
@@ -18,7 +18,7 @@ public class Bot extends BaseBot {
             DEPLACER_BAS,
             ATTAQUER,
             RAMASSER,
-            ACHETER,
+            ACHETER
         }
         Evenement event= Evenement.DEPLACER_DROITE;
         IAction action;
