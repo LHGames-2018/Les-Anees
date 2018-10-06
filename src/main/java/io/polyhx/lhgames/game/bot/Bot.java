@@ -33,6 +33,7 @@ public class Bot extends BaseBot {
                     point = Point.RIGHT;
                 }
             action = createMoveAction(point);
+            break;
             case RAMASSER:
             action = createCollectAction(point);
             break;
