@@ -55,7 +55,6 @@ public class Bot extends BaseBot {
                 pointVerifier=Point.UP;
             }
         }while(pointVerifier!=Point.UP);
-<<<<<<< HEAD
         Random rdn=new Random();
         int aleatoire=rdn.nextInt()%4;
             switch(aleatoire){
@@ -73,19 +72,7 @@ public class Bot extends BaseBot {
                     break;
             }
         }
-
-
-
-        switch(event){
-            case DEPLACER:
-                action = createMoveAction(pointDeplacer);
-=======
         
-        
-        
-        System.out.println("actionFaite2");
-        System.out.println(pointDeplacer);
-        System.out.println("actionFaite3");
        switch (event) {
             case VOLER:
                 action = createStealAction(pointVerifier);
@@ -95,12 +82,10 @@ public class Bot extends BaseBot {
                 break;
             case ATTAQUER:
                 action = createMeleeAttackAction(pointVerifier);
->>>>>>> 1e2037f65fe35af86e8d20f059aff8890bd7b77c
                 break;
             case RAMASSER:
                 action = createCollectAction(pointVerifier);
                 break;
-<<<<<<< HEAD
             case DETRUIRE:
                 action = createMeleeAttackAction(pointVerifier);
                 break;
@@ -112,12 +97,10 @@ public class Bot extends BaseBot {
                 break;
             case ACHETER:
                 //action = createCollectAction(pointVerifier);
-=======
             case ACHETER:
                 //action = createPurchaseAction();
                 break;
             default:
->>>>>>> 1e2037f65fe35af86e8d20f059aff8890bd7b77c
                 break;
         }
         ancienneAction=action;
