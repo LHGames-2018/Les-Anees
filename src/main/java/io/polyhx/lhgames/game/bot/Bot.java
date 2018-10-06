@@ -25,6 +25,9 @@ public class Bot extends BaseBot {
         Evenement event= Evenement.DEPLACER;
         IAction action=null;
         map.getTile(player.getX()+1, player.getY());
+        
+        
+        
         do{
             Tile tile = map.getTileAboveOf(pointVerifier);
                 if(tile.isResource())
@@ -57,7 +60,11 @@ public class Bot extends BaseBot {
             }
         }while(pointVerifier!=Point.UP);
         
+        
+        
+        System.out.println("actionFaite2");
         System.out.println(pointDeplacer);
+        System.out.println("actionFaite3");
         switch(event){
             case DEPLACER:
                 if(pointDeplacer==Point.RIGHT){
