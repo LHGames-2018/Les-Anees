@@ -20,20 +20,21 @@ public class Bot extends BaseBot {
             ACHETER
         }
     IAction ancienneAction;
+    Point point;
     public IAction getAction(Map map, Player player, List<Player> others, GameInfo info) {
         
-        Evenement event= Evenement.DEPLACER_DROITE;
+        Evenement event= Evenement.RAMASSER;
         IAction action=null;
         map.getTile(player.getX()+1, player.getY());
-
+        
         switch(event){
             case DEPLACER_DROITE:
-            return createMoveAction(Point.RIGHT);
+            action = createMoveAction(Point.RIGHT);
             case RAMASSER:
-            action=createMoveAction(Point.RIGHT);
+            action = createCollectAction(Point.RIGHT);
             break;
         }
         ancienneAction=action;
-        return createCollectAction(Point.RIGHT);
+        return action;
     }
 }
