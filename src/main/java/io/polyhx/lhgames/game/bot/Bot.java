@@ -27,12 +27,10 @@ public class Bot extends BaseBot {
         Evenement event= Evenement.DEPLACER;
         IAction action=null;
         map.getTile(player.getX()+1, player.getY());
-        if(player.getTotalResource() >= player.getResourceCapacity()){
-            System.out.println("action faite");
+        if(player.getCarriedResource() >= player.getResourceCapacity()){
             event=reviens(player);
             pointVerifier=pointDeplacer;
             event=regarderDevant(player,map);
-            System.out.println(event);
         }
         else{
             System.out.println("action faite2");
@@ -142,6 +140,8 @@ public class Bot extends BaseBot {
 
         if(deplacementAleatoire.nextInt()%2 == 0)
         {
+            System.out.println("verifierX");
+            System.out.println(decalageX);
             if(decalageX > 0)
             {
                 pointDeplacer= Point.LEFT;
@@ -152,20 +152,30 @@ public class Bot extends BaseBot {
                 pointDeplacer = Point.RIGHT;
                 return Evenement.DEPLACER;
             }
+            else{
+                pointDeplacer = Point.RIGHT;
+
+                return Evenement.DEPLACER;
+            }
         }
         else
         {
+            System.out.println("verifierY");
+            System.out.println(decalageY);
             if(decalageY > 0)
-            {
-                pointDeplacer = Point.DOWN;
-                return Evenement.DEPLACER;
-            }
-            else if(decalageY < 0)
             {
                 pointDeplacer = Point.UP;
                 return Evenement.DEPLACER;
             }
+            else if(decalageY < 0)
+            {
+                pointDeplacer = Point.DOWN;
+                return Evenement.DEPLACER;
+            }
+            else{
+                pointDeplacer = Point.DOWN;
+                return Evenement.DEPLACER;
+            }
         }
-        return Evenement.DEPLACER;
     }
 }
