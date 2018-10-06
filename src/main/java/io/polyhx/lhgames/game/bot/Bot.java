@@ -9,8 +9,7 @@ import io.polyhx.lhgames.game.point.Point;
 import java.util.List;
 
 public class Bot extends BaseBot {
-    public IAction getAction(Map map, Player player, List<Player> others, GameInfo info) {
-        enum Evenement{
+    enum Evenement{
             VOLER,
             DEPLACER_GAUCHE,
             DEPLACER_DROITE,
@@ -20,15 +19,21 @@ public class Bot extends BaseBot {
             RAMASSER,
             ACHETER
         }
+    IAction ancienneAction;
+    public IAction getAction(Map map, Player player, List<Player> others, GameInfo info) {
+        
         Evenement event= Evenement.DEPLACER_DROITE;
-        IAction action;
+        IAction action=null;
 
 
         switch(event){
             case DEPLACER_DROITE:
+            return createMoveAction(Point.RIGHT);
+            case RAMASSER:
             action=createMoveAction(Point.RIGHT);
             break;
         }
-        return createMoveAction(action);
+        ancienneAction=action;
+        return createMoveAction(Point.RIGHT);
     }
 }
