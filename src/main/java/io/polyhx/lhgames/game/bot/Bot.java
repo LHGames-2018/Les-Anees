@@ -73,12 +73,14 @@ public class Bot extends BaseBot {
             }
         }
 
+        System.out.println(event);
+        System.out.println(pointVerifier.getX()+" "+pointVerifier.getY());
        switch (event) {
             case VOLER:
                 action = createStealAction(pointVerifier);
                 break;
             case DEPLACER:
-                action = createMoveAction(pointVerifier);
+                action = createMoveAction(pointDeplacer);
                 break;
             case ATTAQUER:
                 action = createMeleeAttackAction(pointVerifier);
@@ -90,7 +92,7 @@ public class Bot extends BaseBot {
                 action = createMeleeAttackAction(pointVerifier);
                 break;
             case ACHETER:
-                //action = createPurchaseAction();
+                action = createMoveAction(pointDeplacer);
                 break;
             default:
                 break;
