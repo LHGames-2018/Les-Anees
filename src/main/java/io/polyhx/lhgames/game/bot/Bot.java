@@ -20,7 +20,7 @@ public class Bot extends BaseBot {
             RAMASSER,
             ACHETER,
         }
-        Evenements event= Evenement.DEPLACER_DROITE;
+        Evenement event= Evenement.DEPLACER_DROITE;
         IAction action;
 
 
