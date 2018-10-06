@@ -11,27 +11,30 @@ import java.util.List;
 public class Bot extends BaseBot {
     enum Evenement{
             VOLER,
-            DEPLACER_GAUCHE,
-            DEPLACER_DROITE,
-            DEPLACER_HAUT,
-            DEPLACER_BAS,
+            DEPLACER,
             ATTAQUER,
             RAMASSER,
             ACHETER
         }
     IAction ancienneAction;
-    Point point;
+    Point point=Point.RIGHT;
     public IAction getAction(Map map, Player player, List<Player> others, GameInfo info) {
         
-        Evenement event= Evenement.RAMASSER;
+        Evenement event= Evenement.DEPLACER;
         IAction action=null;
         map.getTile(player.getX()+1, player.getY());
         
         switch(event){
-            case DEPLACER_DROITE:
-            action = createMoveAction(Point.RIGHT);
+            case DEPLACER:
+                if(point==Point.RIGHT){
+                    point = Point.LEFT;
+                }
+                else{
+                    point = Point.RIGHT;
+                }
+            action = createMoveAction(point);
             case RAMASSER:
-            action = createCollectAction(Point.RIGHT);
+            action = createCollectAction(point);
             break;
         }
         ancienneAction=action;
