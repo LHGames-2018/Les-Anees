@@ -72,7 +72,7 @@ public class Bot extends BaseBot {
                     break;
             }
         }
-        
+
        switch (event) {
             case VOLER:
                 action = createStealAction(pointVerifier);
@@ -89,14 +89,6 @@ public class Bot extends BaseBot {
             case DETRUIRE:
                 action = createMeleeAttackAction(pointVerifier);
                 break;
-            case VOLER:
-                action = createStealAction(pointVerifier);
-                break;
-            case ATTAQUER:
-                action = createMeleeAttackAction(pointVerifier);
-                break;
-            case ACHETER:
-                //action = createCollectAction(pointVerifier);
             case ACHETER:
                 //action = createPurchaseAction();
                 break;
@@ -105,38 +97,6 @@ public class Bot extends BaseBot {
         }
         ancienneAction=action;
         return action;
-    }
-
-    public Evenement reviens(Player player)
-    {
-        System.out.println("allo");
-        Point positionActuelle = player.getPosition();
-        Point positionMaison = player.getHousePosition();
-
-        int decalageX = positionActuelle.getX() - positionMaison.getX();
-        int decalageY = positionActuelle.getY() - positionMaison.getY();
-
-        if(decalageX > 0)
-        {
-            pointDeplacer= Point.LEFT;
-            return Evenement.DEPLACER;
-        }
-        else if(decalageX < 0)
-        {
-            pointDeplacer = Point.RIGHT;
-            return Evenement.DEPLACER;
-        }
-        else if(decalageY > 0)
-        {
-            pointDeplacer = Point.UP;
-            return Evenement.DEPLACER;
-        }
-        else if(decalageY < 0)
-        {
-            pointDeplacer = Point.DOWN;
-            return Evenement.DEPLACER;
-        }
-        return Evenement.DEPLACER;
     }
 
     public Evenement regarderDevant(Player player, Map map){
@@ -163,6 +123,46 @@ public class Bot extends BaseBot {
         else if (tile.isPlayer())
         {
             return Evenement.ATTAQUER;
+        }
+        return Evenement.DEPLACER;
+    }
+
+
+    Evenement reviens(Player player)
+    {
+        Point positionActuelle = player.getPosition();
+        Point positionMaison = player.getHousePosition();
+
+        int decalageX = positionActuelle.getX() - positionMaison.getX();
+        int decalageY = positionActuelle.getY() - positionMaison.getY();
+
+        Random deplacementAleatoire= new Random();
+
+        if(deplacementAleatoire.nextInt()%2 == 0)
+        {
+            if(decalageX > 0)
+            {
+                pointDeplacer= Point.LEFT;
+                return Evenement.DEPLACER;
+            }
+            else if(decalageX < 0)
+            {
+                pointDeplacer = Point.RIGHT;
+                return Evenement.DEPLACER;
+            }
+        }
+        else
+        {
+            if(decalageY > 0)
+            {
+                pointDeplacer = Point.DOWN;
+                return Evenement.DEPLACER;
+            }
+            else if(decalageY < 0)
+            {
+                pointDeplacer = Point.UP;
+                return Evenement.DEPLACER;
+            }
         }
         return Evenement.DEPLACER;
     }
