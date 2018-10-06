@@ -24,79 +24,8 @@ public class Bot extends BaseBot {
     Point pointVerifier=Point.UP;
     Point pointDeplacer=Point.RIGHT;
     public IAction getAction(Map map, Player player, List<Player> others, GameInfo info) {
-        Evenement event= Evenement.DEPLACER;
-        IAction action=null;
-        map.getTile(player.getX()+1, player.getY());
-        if(player.getCarriedResource() >= player.getResourceCapacity()){
-            event=reviens(player);
-            pointVerifier=pointDeplacer;
-            event=regarderDevant(player,map);
-        }
-        else{
-            System.out.println("action faite2");
-        do{
 
-            event=regarderDevant(player, map);
-            if(event!=Evenement.DEPLACER){
-                break;
-            }
-            if(pointVerifier==Point.UP){
-                pointVerifier=Point.RIGHT;
-            }
-            else if(pointVerifier==Point.RIGHT){
-                pointVerifier=Point.DOWN;
-            }
-            else if(pointVerifier==Point.DOWN){
-                pointVerifier=Point.LEFT;
-            }
-            else if(pointVerifier==Point.LEFT){
-                pointVerifier=Point.UP;
-            }
-        }while(pointVerifier!=Point.UP);
-        Random rdn=new Random();
-        int aleatoire=rdn.nextInt()%4;
-            switch(aleatoire){
-                case 0:
-                    pointDeplacer=Point.RIGHT;
-                    break;
-                case 1:
-                    pointDeplacer=Point.DOWN;
-                    break;
-                case 2:
-                    pointDeplacer=Point.LEFT;
-                    break;
-                case 3:
-                    pointDeplacer=Point.UP;
-                    break;
-            }
-        }
-
-        System.out.println(event);
-        System.out.println(pointVerifier.getX()+" "+pointVerifier.getY());
-       switch (event) {
-            case VOLER:
-                action = createStealAction(pointVerifier);
-                break;
-            case DEPLACER:
-                action = createMoveAction(pointDeplacer);
-                break;
-            case ATTAQUER:
-                action = createMeleeAttackAction(pointVerifier);
-                break;
-            case RAMASSER:
-                action = createCollectAction(pointVerifier);
-                break;
-            case DETRUIRE:
-                action = createMeleeAttackAction(pointVerifier);
-                break;
-            case ACHETER:
-                action = createMoveAction(pointDeplacer);
-                break;
-            default:
-                break;
-        }
-        ancienneAction=action;
-        return action;
+        return createMeleeAttackAction(Point.UP);
     }
 
     public Evenement regarderDevant(Player player, Map map){
