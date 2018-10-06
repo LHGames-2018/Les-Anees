@@ -10,6 +10,25 @@ import java.util.List;
 
 public class Bot extends BaseBot {
     public IAction getAction(Map map, Player player, List<Player> others, GameInfo info) {
-        return createMoveAction(Point.LEFT);
+        Enum Evenement{
+            VOLER,
+            DEPLACER_GAUCHE,
+            DEPLACER_DROITE,
+            DEPLACER_HAUT,
+            DEPLACER_BAS,
+            ATTAQUER,
+            RAMASSER,
+            ACHETER,
+        }
+        Evenements event= Evenement.DEPLACER_DROITE;
+        IAction action;
+
+
+        switch(event){
+            case DEPLACER_DROITE:
+            action=createMoveAction(Point.RIGHT);
+            break;
+        }
+        return createMoveAction(action);
     }
 }
