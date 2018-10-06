@@ -21,7 +21,7 @@ public class Bot extends BaseBot {
     Point pointVerifier=Point.UP;
     Point pointDeplacer=Point.RIGHT;
     public IAction getAction(Map map, Player player, List<Player> others, GameInfo info) {
-        
+        System.out.println("action faite");
         Evenement event= Evenement.DEPLACER;
         IAction action=null;
         map.getTile(player.getX()+1, player.getY());
@@ -57,6 +57,7 @@ public class Bot extends BaseBot {
             }
         }while(pointVerifier!=Point.UP);
         
+        System.out.println(pointDeplacer);
         switch(event){
             case DEPLACER:
                 if(pointDeplacer==Point.RIGHT){
@@ -71,6 +72,7 @@ public class Bot extends BaseBot {
             action = createCollectAction(pointDeplacer);
             break;
         }
+        System.out.println(action);
         ancienneAction=action;
         return action;
     }
