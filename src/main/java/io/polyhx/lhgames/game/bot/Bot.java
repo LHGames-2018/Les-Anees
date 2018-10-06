@@ -24,7 +24,7 @@ public class Bot extends BaseBot {
         
         Evenement event= Evenement.DEPLACER_DROITE;
         IAction action=null;
-
+        map.getTile(player.getX()+1, player.getY());
 
         switch(event){
             case DEPLACER_DROITE:
@@ -34,6 +34,6 @@ public class Bot extends BaseBot {
             break;
         }
         ancienneAction=action;
-        return createMoveAction(Point.RIGHT);
+        return createCollectAction(Point.RIGHT);
     }
 }
