@@ -97,7 +97,7 @@ public class Bot extends BaseBot {
         }
         ancienneAction=action;*/
         System.out.println("alloooo");
-        return createMoveAction(Point.DOWN);
+        return createMeleeAttackAction(Point.UP);
     }
 
     /*public Evenement regarderDevant(Player player, Map map){
